@@ -50,4 +50,6 @@ node_modules/*
 node_modules/**/*
 dist/
 dist/js/vendor/
-test/bower_compontents/
+test/bower_components/**/*
+test/bower_components/*
+

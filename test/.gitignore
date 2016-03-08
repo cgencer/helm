@@ -28,6 +28,6 @@ Temporary Items
 .apdisk
 
 # project specific
-bower_compontents/
-bower_compontents/*
-bower_compontents/**/*
+bower_components/
+bower_components/*
+bower_components/**/*
