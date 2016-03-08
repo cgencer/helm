@@ -5,9 +5,9 @@ var flatten = require('gulp-flatten');
 var size = require('gulp-size');
 
 gulp.task('fonts', function() {
-  return gulp.src(bowerFiles())
-    .pipe(filter('**/*.{eot,svg,ttf,woff}'))
-    .pipe(flatten())
-    .pipe(gulp.dest('dist/fonts'))
-    .pipe(size());
+    return gulp.src(bowerFiles())
+        .pipe(filter(app.filters.fonts))
+        .pipe(flatten())
+        .pipe(gulp.dest(app.paths.dest.fonts))
+        .pipe(size());
 });
