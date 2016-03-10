@@ -1,3 +1,7 @@
-var gulp = require('gulp');
+module.exports = function (app) {
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras']);
+    var gulp = require('gulp');
+
+    gulp.task('build', ['html', 'images', 'fonts', 'extras']);
+
+}

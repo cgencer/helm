@@ -1,5 +1,8 @@
-var gulp = require('gulp');
+module.exports = function (app) {
 
-gulp.task('default', ['clean'], function() {
-    gulp.start('build');
-});
+    var gulp = require('gulp');
+
+    gulp.task('default', ['clean'], function() {
+        gulp.start('build');
+    });
+}

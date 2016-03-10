@@ -28,7 +28,6 @@ app:
         fonts           : '../app/fonts/'
         scripts         : '../app/scripts/'
         styles          : '../app/styles/'
-        data            : '../app/data'
         less:
             - 'app/styles/includes'
             - 'app/bower_components/bootstrap/less'
@@ -38,21 +37,21 @@ app:
             images      : '../dist/images/'
             fonts       : '../dist/fonts'
         search          : '{.tmp,app}'
-        sources:
-            wiredep     : 'app/*.html'
-            watch:
-                - 'app/*.html'
-                - '.tmp/styles/**/*.css'
-                - '{.tmp,app}/scripts/**/*.js'
-                - 'app/images/**/*'
-            styles      : 'app/styles/**/*.less'
-            coffeeScr   : 'app/scripts/**/*.coffee'
-            images      : 'app/images/**/*'
-            less        : 'app/styles/main.less'
-            extras:
-                - 'app/*.*'
-                - '!app/*.html'
-        filters:
-            scripts     : '**/*.js'
-            styles      : '**/*.css'
-            fonts       : '**/*.{eot,svg,ttf,woff}'
+    sources:
+        wiredep         : 'app/*.html'
+        watch:
+            - 'app/*.html'
+            - '.tmp/styles/**/*.css'
+            - '{.tmp,app}/scripts/**/*.js'
+            - 'app/images/**/*'
+        styles          : 'app/styles/**/*.less'
+        coffeeScr       : 'app/scripts/**/*.coffee'
+        images          : 'app/images/**/*'
+        less            : 'app/styles/main.less'
+        extras:
+            - 'app/*.*'
+            - '!app/*.html'
+    filters:
+        scripts     : '**/*.js'
+        styles      : '**/*.css'
+        fonts       : '**/*.{eot,svg,ttf,woff}'
