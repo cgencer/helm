@@ -1,8 +1,11 @@
 (function() {
 
 	var fs = require('fs');
+	var yaml = require('gulp-yaml');
 	var onlyScripts = require('./util/scriptFilter');
-	var tasks = fs.readdirSync('./gulp/tasks/').filter(onlyScripts);
+	var tasks = fs.readdirSync('./build/tasks/').filter(onlyScripts);
+
+	console.dir(tasks);
 
 	var app = {
 		hosts: {
