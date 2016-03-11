@@ -1,10 +1,9 @@
-module.exports = function (app) {
+var run = require('gulp-run');
 
-    var gulp = require('gulp');
-    var run = require('gulp-run');
-
+module.exports = function (config, gulp) {
+/*
     gulp.task('clean', function(cb) {
-      run('rm -rf dist .tmp').exec(cb);
+      run('rm -rf !(dist/js/vendor/) dist .tmp').exec(cb);
     });
-
+*/
 }

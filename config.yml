@@ -3,16 +3,16 @@ tasks:
     - browserify.js
     - build.js
     - clean.js
-    - connect.js
+#    - connect.js
     - default.js
     - extras.js
     - fonts.js
     - html.js
     - images.js
-    - serve.js
+#    - serve.js
     - styles.js
-    - watch.js
-    - wiredep.js
+#    - watch.js
+#    - wiredep.js
 app:
     hosts:
         port            : 9000
@@ -21,35 +21,39 @@ app:
         npm             : '../package.json'
         bower           : '../bower.json'
         test            : '../test/index.js'
+        coffeeMain      : './app/scripts/main.coffee'
+        styLess         : './app/styles/main.less'
+        scrMain         : './dist/main.js'
     paths:
-        vendor          : '../dist/js/vendor/'
-        html            : '../dist/'
-        data            : '../app/data/'
-        fonts           : '../app/fonts/'
-        scripts         : '../app/scripts/'
-        styles          : '../app/styles/'
+        vendor          : './dist/js/vendor/'
+        app:
+            data        : './app/data/'
+            fonts       : './app/fonts/'               # if removed, bypasses the font task
+            scripts     : './app/scripts/'
+            styles      : './app/styles/'
+        tmp:
+            styles      : '.tmp/styles'
+            scripts     : '.tmp/scripts'
+        dist:
+            root        : './dist/'
+            images      : './dist/images/'
+            fonts       : './dist/fonts/'
+        assets          : '{./.tmp,./app,./dist}'
         less:
-            - 'app/styles/includes'
-            - 'app/bower_components/bootstrap/less'
-        tmpStyles       : '.tmp/styles'
-        dest:
-            root        : '../dist/'
-            images      : '../dist/images/'
-            fonts       : '../dist/fonts'
-        search          : '{.tmp,app}'
+            - './app/styles/includes'
+            - './dist/js/vendor/bootstrap/less'
     sources:
-        wiredep         : 'app/*.html'
+        wiredep         : './app/*.html'
         watch:
-            - 'app/*.html'
+            - './app/*.html'
             - '.tmp/styles/**/*.css'
             - '{.tmp,app}/scripts/**/*.js'
             - 'app/images/**/*'
-        styles          : 'app/styles/**/*.less'
-        coffeeScr       : 'app/scripts/**/*.coffee'
-        images          : 'app/images/**/*'
-        less            : 'app/styles/main.less'
+        styles          : './app/styles/**/*.less'
+        coffeeScr       : './app/scripts/**/*.coffee'
+        images          : './app/images/**/*.{gif,png,jpg,jpeg}'
         extras:
-            - 'app/*.*'
+            - './app/*.*'
             - '!app/*.html'
     filters:
         scripts     : '**/*.js'

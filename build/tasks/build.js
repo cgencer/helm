@@ -1,7 +1,3 @@
-module.exports = function (app) {
-
-    var gulp = require('gulp');
-
+module.exports = function (config, gulp) {
     gulp.task('build', ['html', 'images', 'fonts', 'extras']);
-
 }

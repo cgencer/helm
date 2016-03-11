@@ -1,10 +1,8 @@
-module.exports = function (app) {
-    var gulp = require('gulp');
-
+module.exports = function (config, gulp) {
     gulp.task('extras', function() {
-        return gulp.src(app.sources.extras, {
+        return gulp.src(config.sources.extras, {
             dot: true
         })
-        .pipe(gulp.dest(app.paths.dest.root));
+        .pipe(gulp.dest(config.paths.dist.root));
     });
 }

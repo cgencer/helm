@@ -1,7 +1,5 @@
-module.exports = function (app) {
-    var gulp = require('gulp');
-
+module.exports = function (config, gulp) {
     gulp.task('serve', ['connect', 'styles', 'browserify'], function() {
-        require('opn')(app.hosts.local);
+        require('opn')(config.hosts.local);
     });
 }

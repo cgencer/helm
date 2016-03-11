@@ -1,16 +1,15 @@
-module.exports = function (app) {
-    var gulp = require('gulp');
+module.exports = function (config, gulp) {
 
     // inject bower components
     gulp.task('wiredep', function() {
     	var wiredep = require('wiredep').stream;
 
-    	gulp.src(app.sources.wiredep)
+    	gulp.src(config.sources.wiredep)
     	.pipe(wiredep({
-    //		cwd:        app.paths.html,
-    		bowerJson:  require(app.files.bower),
-    		directory:  app.paths.vendor
+    //		cwd:        config.paths.root,
+    		bowerJson:  require(config.files.bower),
+    		directory:  config.paths.vendor
     	}))
-    	.pipe(gulp.dest(app.paths.html));
+    	.pipe(gulp.dest(config.paths.root));
     });
 }
