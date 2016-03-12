@@ -3,17 +3,25 @@ tasks:
     - browserify.js
     - build.js
     - clean.js
-#    - connect.js
+    - connect.js
     - default.js
     - extras.js
     - fonts.js
     - html.js
     - images.js
-#    - serve.js
+    - serve.js
     - styles.js
-#    - watch.js
-#    - wiredep.js
+    - watch.js
+    - wiredep.js
 app:
+    options:
+        frameworks      : 'bootstrap'       # raw / bootstrap
+        styling         : 'less'            # less / sans / raw
+        scripting       : 'coffee'          # coffee / js
+        templating      : 'html'            # html / jade / nunjucks
+        icons           : true
+        fonts           : false
+        tests           : true
     hosts:
         port            : 9000
         local           : 'http://localhost'
@@ -26,18 +34,21 @@ app:
         scrMain         : './dist/main.js'
     paths:
         vendor          : './dist/js/vendor/'
-        app:
+        app:                                    # if any of these removed, it bypasses that task
             data        : './app/data/'
-            fonts       : './app/fonts/'               # if removed, bypasses the font task
+            fonts       : './app/fonts/'
             scripts     : './app/scripts/'
             styles      : './app/styles/'
+            images      : './dist/images/'
         tmp:
+            root        : '.tmp/'
             styles      : '.tmp/styles'
             scripts     : '.tmp/scripts'
         dist:
             root        : './dist/'
             images      : './dist/images/'
             fonts       : './dist/fonts/'
+            styles      : './dist/styles/'
         assets          : '{./.tmp,./app,./dist}'
         less:
             - './app/styles/includes'

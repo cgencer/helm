@@ -7,9 +7,7 @@ var path        = require('path');
 var browserSync = require('browser-sync')
 
 module.exports = function (config, gulp) {
-    if(!config.paths.app.fonts) return
-
-    gulp.task('fonts', function() {
+    gulp.task('fonts', (config.options.fonts && config.paths.app.fonts) ? function() {
         return gulp.src(bowerFiles(/* options */), { base: config.paths.vendor })
             .pipe(filter(config.filters.fonts))
             .pipe(changed(config.paths.dist.fonts))
@@ -17,26 +15,8 @@ module.exports = function (config, gulp) {
             .pipe(gulp.dest(config.paths.dist.fonts))
             .pipe(browserSync.stream())
             .pipe(size());
+    } : function() {
+        console.log('exiting fonts because no files');
+        return;
     });
 }
-/*
-
-var config      = require('../config')
-
-var gulp        = require('gulp')
-
-var paths = {
-  src: path.join(config.root.src, config.tasks.fonts.src),      // , '/** / *'
-  dest: path.join(config.root.dest, config.tasks.fonts.dest)
-}
-
-var fontsTask = function() {
-  return gulp.src(paths.src)
-    .pipe(changed(paths.dest)) // Ignore unchanged files
-    .pipe(gulp.dest(paths.dest))
-    .pipe(browserSync.stream())
-}
-
-gulp.task('fonts', fontsTask)
-module.exports = fontsTask
-*/

@@ -5,7 +5,10 @@ var sourcemaps = require('gulp-sourcemaps');
 var size = require('gulp-size');
 
 module.exports = function (config, gulp) {
-    gulp.task('styles', function () {
+    gulp.task('styles', !config.paths.app.images ? function () {
+        console.log('exiting styles because no files');
+        return;
+    } : function () {
         return gulp.src(config.files.styLess)
             // .pipe(sourcemaps.init())
             .pipe(less({
