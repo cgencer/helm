@@ -39,7 +39,7 @@ module.exports = function (config, gulp) {
 				// desired output filename here.
 				.pipe(source(config.files.scrMain))
 				// Specify the output destination
-				.pipe(gulp.dest(config.paths.tmp.scripts))
+				.pipe(gulp.dest(config.paths.tmp.root))
 				// Log when bundling completes!
 				.on('end', bundleLogger.end);
 		};

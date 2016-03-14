@@ -1,0 +1,14 @@
+{
+  "name": "preboot",
+  "homepage": "https://github.com/mdo/preboot",
+  "version": "2.1.0",
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "a4f462ec3df2194e72d217c345414b266a97dcf9"
+  },
+  "_source": "git://github.com/mdo/preboot.git",
+  "_target": "^2.1.0",
+  "_originalSource": "preboot"
+}
