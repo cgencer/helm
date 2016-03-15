@@ -30,8 +30,8 @@ app:
         bower           : '../../bower.json'
         test            : '../test/index.js'
         coffeeMain      : './app/scripts/main.coffee'
-        styLess         : './app/styles/main.less'
         scrMain         : './main.js'
+        cssPreboot      : './app/styles/preboot.less'
     paths:
         vendor          : './app/vendor/'
         app:                                    # if any of these removed, it bypasses that task
@@ -55,8 +55,9 @@ app:
             scripts     : './dist/js/'
         assets          : '{./.tmp,./app,./dist}'
         less:
-            - './app/styles/includes'
-            - './dist/js/vendor/bootstrap/less'
+            - './app/styles/'
+            - './app/vendor/bootstrap/less/'
+            - './app/vendor/preboot/less/'
     sources:
         wiredep         : './app/*.html'
         watch:

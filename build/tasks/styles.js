@@ -9,10 +9,11 @@ module.exports = function (config, gulp) {
         console.log('exiting styles because no files');
         return;
     } : function () {
-        return gulp.src(config.files.styLess)
+        return gulp.src(config.files.cssPreboot)
             // .pipe(sourcemaps.init())
             .pipe(less({
-                paths: config.paths.less
+                paths: config.paths.less,
+                compress: true
             }))
             // .pipe(sourcemaps.write())
             .pipe(autoprefixer('last 1 version'))
