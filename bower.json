@@ -23,6 +23,7 @@
     "browser-sync-client": "~2.4.1",
     "gridly": "^1.2.9",
     "lodash": "^4.6.1",
-    "preboot": "^2.1.0"
+    "preboot": "^2.1.0",
+    "lesshat": "^3.0.2"
   }
 }

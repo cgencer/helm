@@ -7,6 +7,7 @@ tasks:
     - default.js
     - extras.js
     - fonts.js
+    - lessinjector.js
     - html.js
     - images.js
     - serve.js
@@ -19,6 +20,9 @@ app:
         styling         : 'less'            # less / sans / raw
         scripting       : 'coffee'          # coffee / js
         templating      : 'html'            # html / jade / nunjucks
+        less:
+            - lesshat
+            - preboot
         icons           : true
         fonts           : false
         tests           : true
@@ -31,7 +35,10 @@ app:
         test            : '../test/index.js'
         coffeeMain      : './app/scripts/main.coffee'
         scrMain         : './main.js'
-        cssPreboot      : './app/styles/preboot.less'
+        lessBoot        : './app/styles/boot.less'                  # our main less-file
+        lesshat         : 'lesshat/build/lesshat-prefixed.less'     # these will be the entry points of less
+        preboot         : 'preboot/less/docs.less'                  # frameworks to be added to the import directive
+        icons           : './app/partials/icons.html'
     paths:
         vendor          : './app/vendor/'
         app:                                    # if any of these removed, it bypasses that task
@@ -71,6 +78,7 @@ app:
         extras:
             - './app/*.*'
             - '!app/*.html'
+            - '!app/*.less'
     filters:
         scripts     : '**/*.js'
         styles      : '**/*.css'

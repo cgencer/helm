@@ -14,7 +14,7 @@ var cleanCSS = require('gulp-clean-css');
 var minifyCss = require('gulp-minify-css');
 
 module.exports = function (config, gulp) {
-	gulp.task('html', ['wiredep', 'styles', 'browserify'], function() {
+	gulp.task('html', ['lessinject', 'wiredep' /*, 'styles', 'browserify'*/], function() {
 
         return gulp.src([config.sources.wiredep])
             .pipe(usemin({

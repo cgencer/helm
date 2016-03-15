@@ -1,3 +1,6 @@
 [submodule "app/styles/zoless"]
 	path = app/styles/zoless
 	url = https://github.com/basecss/zo-less.git
+[submodule "app/styles/lesshat"]
+	path = app/styles/lesshat
+	url = https://github.com/madebysource/lesshat.git

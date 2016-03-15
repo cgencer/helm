@@ -9,7 +9,7 @@ module.exports = function (config, gulp) {
         console.log('exiting styles because no files');
         return;
     } : function () {
-        return gulp.src(config.files.cssPreboot)
+        return gulp.src(config.files.lessBoot)
             // .pipe(sourcemaps.init())
             .pipe(less({
                 paths: config.paths.less,
