@@ -2,24 +2,32 @@ var inject = require('gulp-inject');
 var gulpif = require('gulp-if');
 var less = require('gulp-less');
 
+// uses less files
+// writes to .tmp
 module.exports = function (config, gulp) {
     gulp.task('lessinject', function() {
-
-        return gulp.src(config.files.lessBoot)
-            /**
-            * Dynamically injects @import statements into the main app.less file, allowing
-            * .less files to be placed around the app structure with the component
-            * or page they apply to.
-            */
-            .pipe(gulpif((config.options.less.indexOf('preboot') != -1), 
-                inject(gulp.src([config.files.preboot], {
-                    read: false, 
-                    cwd: config.paths.tmp.styles
-                }), {
+        var scriptSet = [];
+        for(var i in config.options.less) {
+            scriptSet.push( config.files[ config.options.less[i] ] );
+        }
+        return gulp.src(config.files.lessBoot)      // './app/styles/boot.less'
+            /* Dynamically injects @import statements into the main .less file */
+            .pipe(gulpif(
+                // the condition
+                ((config.options.styling == 'less') && (scriptSet.length > 0)), 
+                // it won't hurt... here comes the the injection...
+                inject(
+                    // source-stream options
+                    gulp.src(scriptSet, {
+                        read: false, 
+                        cwd: config.paths.vendor
+                    }
+                ), {
+                    // inject options
                     starttag:   '/* inject:less */',
                     endtag:     '/* endinject */',
                     transform: function (filepath) {
-                        return '@import ".' + filepath + '";';
+                        return '@import "../../app/vendor' + filepath + '";';
                     }
                 })
             ))

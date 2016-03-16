@@ -12,14 +12,15 @@ var path = require('path');
 var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var minifyCss = require('gulp-minify-css');
+var htmlmin = require('gulp-htmlmin');
 
 module.exports = function (config, gulp) {
-	gulp.task('html', ['lessinject', 'wiredep' /*, 'styles', 'browserify'*/], function() {
+	gulp.task('html', ['wiredep', /*, 'styles', 'browserify'*/], function() {
 
-        return gulp.src([config.sources.wiredep])
+        return gulp.src([config.sources.allHtml])
             .pipe(usemin({
                 css: [ cleanCSS({keepSpecialComments: 0}), rev() ],
-//                html: [ minifyHtml({ empty: true }) ],
+                html: [ htmlmin({collapseWhitespace: true}) ],
                 js: [ uglify(), rev() ],
                 inlinejs: [ uglify() ],
                 inlinecss: [ minifyCss(), 'concat' ]
@@ -27,7 +28,7 @@ module.exports = function (config, gulp) {
             .pipe(gulp.dest(config.paths.dist.root));
 /*
 		return gulp.src([
-                config.sources.wiredep,
+                config.sources.allHtml,
                 config.paths.tmp.scripts + config.filters.scripts, 
                 config.paths.app.scripts + config.filters.scripts, 
                 config.paths.tmp.styles + config.filters.styles, 
