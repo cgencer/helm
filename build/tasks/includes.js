@@ -6,7 +6,7 @@ var gulpif = require('gulp-if');
 // writes to .tmp
 module.exports = function (config, gulp) {
     // inject bower components
-    gulp.task('htmlinject', function() {
+    gulp.task('includes', function() {
         return gulp.src([config.sources.allHtml])
             // this injects the icons partial into the head
             .pipe(gulpif(config.options.icons,

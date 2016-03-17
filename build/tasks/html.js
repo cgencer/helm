@@ -15,47 +15,24 @@ var minifyCss = require('gulp-minify-css');
 var htmlmin = require('gulp-htmlmin');
 
 module.exports = function (config, gulp) {
-	gulp.task('html', ['wiredep', /*, 'styles', 'browserify'*/], function() {
+	gulp.task('html', ['combine', 'styles', 'browserify'], function() {
 
-        return gulp.src([config.sources.allHtml])
+        return gulp.src([
+                config.paths.tmp.html, 
+                config.paths.dist.html, 
+                config.paths.dist.styles, 
+                config.paths.dist.scripts
+            ])
             .pipe(usemin({
                 css: [ cleanCSS({keepSpecialComments: 0}), rev() ],
-                html: [ htmlmin({collapseWhitespace: true}) ],
+                html: [ htmlmin({
+                    collapseWhitespace: true,
+                    removeComments: true,
+                }) ],
                 js: [ uglify(), rev() ],
                 inlinejs: [ uglify() ],
                 inlinecss: [ minifyCss(), 'concat' ]
             }))
             .pipe(gulp.dest(config.paths.dist.root));
-/*
-		return gulp.src([
-                config.sources.allHtml,
-                config.paths.tmp.scripts + config.filters.scripts, 
-                config.paths.app.scripts + config.filters.scripts, 
-                config.paths.tmp.styles + config.filters.styles, 
-                config.paths.app.styles + config.filters.styles
-            ])
-			.pipe(useref({
-				cwd: config.paths.dist.root,
-				searchPath: [
-                    config.paths.vendor, 
-                    config.paths.tmp.scripts, 
-                    config.paths.app.scripts, 
-                    config.paths.tmp.styles, 
-                    config.paths.app.styles
-                ]
-			}))
-			.pipe(gulpif(config.filters.scripts, uglify()))
-			.pipe(gulpif(config.filters.styles, cleanCSS({debug: true}, function(details) {
-                console.log(details.name + ': ' + details.stats.originalSize);
-                console.log(details.name + ': ' + details.stats.minifiedSize);
-            })))
-//            .pipe(gulpif(config.filters.scripts, concat('app.js')))
-//            .pipe(gulpif(config.filters.styles, concat('app.css')))
-            .pipe(tap(function (file, t) {
-                gutil.log(file.path);
-            }))
-			.pipe(gulp.dest(config.paths.dist.root))
-			.pipe(size())
-*/
 	});
 }

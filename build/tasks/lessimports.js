@@ -5,11 +5,15 @@ var less = require('gulp-less');
 // uses less files
 // writes to .tmp
 module.exports = function (config, gulp) {
-    gulp.task('lessinject', function() {
+    gulp.task('lessimport', function() {
         var scriptSet = [];
         for(var i in config.options.less) {
             scriptSet.push( config.files[ config.options.less[i] ] );
         }
+        // copies the css files to tmp as well
+        gulp.src([config.paths.app.styles + '*.css'])
+            .pipe(gulp.dest(config.paths.tmp.styles))
+
         return gulp.src(config.files.lessBoot)      // './app/styles/boot.less'
             /* Dynamically injects @import statements into the main .less file */
             .pipe(gulpif(

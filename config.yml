@@ -7,8 +7,9 @@ tasks:
     - default.js
     - extras.js
     - fonts.js
-    - lessinjector.js
-    - htmlinjector.js
+    - lessimports.js
+    - includes.js
+    - combine.js
     - html.js
     - images.js
     - serve.js
@@ -36,7 +37,7 @@ app:
         bower           : '../../bower.json'
         test            : '../test/index.js'
         coffeeMain      : './app/scripts/main.coffee'
-        scrMain         : './main.js'
+        scrMain         : './scripts/main.js'
         lessBoot        : './app/styles/boot.less'                  # our main less-file
         lesshat         : 'lesshat/build/lesshat-prefixed.less'     # these will be the entry points of less
         preboot         : 'preboot/less/docs.less'                  # frameworks to be added to the import directive
@@ -60,6 +61,7 @@ app:
             scripts     : './.tmp/scripts/'
         dist:
             root        : './dist/'
+            html        : './dist/*.html'
             images      : './dist/images/'
             fonts       : './dist/fonts/'
             styles      : './dist/css/'

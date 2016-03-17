@@ -3,10 +3,10 @@ var inject = require('gulp-inject');
 var gulpif = require('gulp-if');
 
 // reads html files from .tmp
-// writes to dist
+// writes to .tmp
 module.exports = function (config, gulp) {
     // inject bower components
-    gulp.task('wiredep', ['lessinject', 'htmlinject'], function() {
+    gulp.task('wiredep', ['lessimport', 'includes'], function() {
     	return gulp.src([config.paths.tmp.html])
             // inject the scripts
             .pipe(wiredep({
